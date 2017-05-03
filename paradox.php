@@ -49,12 +49,12 @@ do {
         case 'y'  : $result += $paradox[$step][0]; $step++; break;
         case 'n'   : $step++; break;
         case 'a': $result = 0; $step = 0; break;
-        default: echo "I said 'y', 'n' or 'a'...\n"; exit; break;
+        default: echo "I said 'y', 'n' or 'a'...\n"; exit;
     }
 
 } while ($step < 6);
 
 if($step === 6) {
-    echo "It was ".$result." isn't it?\n";
+    echo ($result === 0) ? "It was not between 1-63. Is it?\n" : "It was ".$result." isn't it?\n";
     fclose($handle);
 }
