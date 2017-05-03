@@ -33,23 +33,23 @@ for ($p6 = 32; $p6 < 64; $p6++) {
 $step = $result = 0;
 
 do {
-    $d = "";
+    $deck = "";
     foreach ($paradox[$step] as $p) {
-        $d .= $p."\t";
+        $deck .= $p."\t";
     }
 
-    echo $d."\n";
+    echo $deck."\n";
 
-    echo "Pick a number between 1-63. If it is on the deck above, type 'yes', else type 'no':";
+    echo "Pick a number between 1-63. Can you spot it on the deck above? [yna]:";
 
     $handle = fopen ("php://stdin","r");
     $line   = fgets($handle);
 
     switch (trim($line,"\n\r")) {
-        case 'yes'  : $result += $paradox[$step][0]; $step++; break;
-        case 'no'   : $step++; break;
-        #case 'again': $result = 0; $step = 0; break;
-        default: echo "I said 'yes' or 'no'...\n"; exit; break;
+        case 'y'  : $result += $paradox[$step][0]; $step++; break;
+        case 'n'   : $step++; break;
+        case 'a': $result = 0; $step = 0; break;
+        default: echo "I said 'y', 'n' or 'a'...\n"; exit; break;
     }
 
 } while ($step < 6);
